@@ -1,19 +1,17 @@
-// Scroll to specific values
-// scrollTo is the same
-window.scroll({
-  top: 2500,
-  left: 0,
-  behavior: 'smooth'
-});
+$(function(){
 
-// Scroll certain amounts from current position
-window.scrollBy({
-  top: 100, // could be negative value
-  left: 0,
-  behavior: 'smooth'
-});
+  $("a").click(function(event){
+    if (this.hash !== "") {
+      event.preventDefault();
 
-// Scroll to a certain element
-document.querySelector('.hello').scrollIntoView({
-  behavior: 'smooth'
+      var gato = this.hash;
+
+      $("html, body").animate({
+        scrollTop: $(gato).offset().top
+      }, 800, function(){
+        window.location.hash = gato;
+      });
+    }
+  });
+
 });
